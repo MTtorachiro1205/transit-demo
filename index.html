@@ -1,0 +1,179 @@
+<index.html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アプリ画面イメージ（韓国特化）</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* 増田研究室のブランドカラー定義 */
+    :root {
+      --masuda-navy: #163e70;
+      --masuda-navy-dark: #0d2645;
+      --masuda-light-blue: #0070c0;
+      --accent-green: #2ecc71;
+    }
+    
+    /* ボタンの電波パルスアニメーション */
+    @keyframes pulse-signal {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 112, 192, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 8px rgba(0, 112, 192, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 112, 192, 0);
+      }
+    }
+    
+    .pulse-animation {
+      animation: pulse-signal 2s infinite;
+    }
+
+    @keyframes pulse-signal-active {
+      0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 8px rgba(46, 204, 113, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+      }
+    }
+
+    .pulse-active {
+      animation: pulse-signal-active 2s infinite;
+    }
+  </style>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen p-2 font-sans select-none">
+
+  <!-- 全体コンテナ（無駄な余白を削り、コンパクトに集約） -->
+  <div class="max-w-[280px] w-full flex flex-col items-center">
+    
+    <!-- タイトル部（フォントサイズを小さくし、間延びを解消） -->
+    <div class="text-center mb-3">
+      <h3 class="text-xs font-bold text-[#0070c0] tracking-wider mb-0.5">
+        アプリ画面イメージ (第1弾・韓国特化)
+      </h3>
+      <h2 class="text-base font-black text-[#163e70] tracking-normal">
+        改札タッチ直前のアクティブ状態
+      </h2>
+    </div>
+
+    <!-- スマホ本体モックアップ（w-64, h-[370px] へとコンパクト化） -->
+    <div class="relative w-64 h-[370px] rounded-[32px] border-[8px] border-[#163e70] bg-[#0d2645] shadow-xl overflow-hidden flex flex-col justify-between p-3 pb-4 transition-all duration-300">
+      
+      <!-- スピーカー＆インカメラのノッチ（スマホに合わせたサイズに） -->
+      <div class="absolute top-1 left-1/2 transform -translate-x-1/2 w-20 h-3 bg-[#163e70] rounded-full z-20"></div>
+
+      <!-- スマホ内ヘッダー（余白の最適化） -->
+      <div class="mt-2 flex justify-between items-center px-1 z-10">
+        <div class="flex items-center space-x-1">
+          <span class="text-white text-[11px] font-bold">第1弾：韓国 (T-money)</span>
+        </div>
+        <div class="flex items-center space-x-1 text-[#ff5a5f]">
+          <i class="fa-solid fa-location-dot text-[10px]"></i>
+          <span class="text-[10px] font-bold">ソウル</span>
+        </div>
+      </div>
+
+      <!-- 残高表示カード（縦幅をスリム化） -->
+      <div class="bg-[#163e70]/40 border border-[#163e70]/80 rounded-xl p-3 mx-1 my-1.5 flex flex-col items-center justify-center shadow-inner transition-all duration-300">
+        <span class="text-gray-300 text-[10px] mb-0.5">現在のウォン残高</span>
+        <div id="balance-krw" class="text-white text-xl font-black tracking-wide transition-all duration-300">
+          ₩ 12,500
+        </div>
+        <div id="balance-jpy" class="text-gray-300 text-[10px] mt-0.5 transition-all duration-300">
+          (約 1,420 円)
+        </div>
+      </div>
+
+      <!-- アクションエリア -->
+      <div class="flex flex-col items-center justify-center flex-grow py-1">
+        <!-- アクションボタン（タップしやすいまま高さをスリム化） -->
+        <button id="action-btn" class="w-full py-2.5 rounded-xl bg-[#0070c0] hover:bg-[#005a9e] text-white font-bold flex items-center justify-center space-x-2 shadow-md transition-all duration-300 pulse-animation">
+          <i id="btn-icon" class="fa-solid fa-wifi rotate-90 text-xs"></i>
+          <span id="btn-text" class="text-xs">タッチ乗車中</span>
+        </button>
+      </div>
+
+      <!-- 下部注意書き（スマホ画面内） -->
+      <div class="px-1 text-center">
+        <p class="text-gray-300 text-[9px] leading-relaxed">
+          ※日本のおサイフケータイとは自動的に切り分けるため競合しません
+        </p>
+      </div>
+
+    </div>
+
+    <!-- スマホ外の下部説明文（余白と文字サイズをスライド用に最適化） -->
+    <div class="text-center mt-3 px-2">
+      <p class="text-[#163e70] text-[10px] font-medium leading-relaxed max-w-[240px] mx-auto">
+        まずは韓国でスタート。システムの基礎が完成すれば、将来は他の国々も1アプリに追加可能です。
+      </p>
+      
+      <!-- インタラクティブ操作用リセットリンク -->
+      <button id="reset-btn" class="mt-2 text-[#0070c0] hover:text-[#163e70] text-[10px] font-bold flex items-center justify-center space-x-1 mx-auto transition-colors duration-200">
+        <i class="fa-solid fa-rotate-left text-[9px]"></i>
+        <span>クリックしてデモをリセット</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- JavaScriptによるデモインタラクション制御 -->
+  <script>
+    const actionBtn = document.getElementById('action-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+    const balanceKrw = document.getElementById('balance-krw');
+    const balanceJpy = document.getElementById('balance-jpy');
+    const resetBtn = document.getElementById('reset-btn');
+
+    let isActive = false;
+
+    // クリックされたら「乗車完了（残高減少）」に切り替え
+    actionBtn.addEventListener('click', () => {
+      if (!isActive) {
+        isActive = true;
+        
+        // ボタンのデザインとテキストの更新
+        actionBtn.classList.remove('bg-[#0070c0]', 'hover:bg-[#005a9e]', 'pulse-animation');
+        actionBtn.classList.add('bg-[#2ecc71]', 'hover:bg-[#27ae60]', 'pulse-active');
+        btnText.textContent = '改札を通過しました！';
+        btnIcon.className = 'fa-solid fa-circle-check text-xs';
+
+        // 残高の引き落としアニメーション（初乗り運賃1,400ウォンを引く）
+        balanceKrw.textContent = '₩ 11,100';
+        balanceJpy.textContent = '(約 1,260 円)';
+        
+        // 変化が分かりやすいように一時的に拡大
+        balanceKrw.classList.add('scale-105');
+        setTimeout(() => {
+          balanceKrw.classList.remove('scale-105');
+        }, 300);
+      }
+    });
+
+    // デモを最初の状態に戻す
+    resetBtn.addEventListener('click', () => {
+      isActive = false;
+      
+      // ボタンを初期状態に復元
+      actionBtn.className = 'w-full py-2.5 rounded-xl bg-[#0070c0] hover:bg-[#005a9e] text-white font-bold flex items-center justify-center space-x-2 shadow-md transition-all duration-300 pulse-animation';
+      btnText.textContent = 'タッチ乗車中';
+      btnIcon.className = 'fa-solid fa-wifi rotate-90 text-xs';
+
+      // 残高を元に戻す
+      balanceKrw.textContent = '₩ 12,500';
+      balanceJpy.textContent = '(約 1,420 円)';
+    });
+  </script>
+</body>
+</html>
